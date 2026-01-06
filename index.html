@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Virtual Painter - Toolbar</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Toolbar -->
+  <div class="toolbar">
+    <!-- Logo Section -->
+    <div class="logo-section">
+      <svg width="56" height="56" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" class="robot-logo">
+        <!-- Antenna -->
+        <circle cx="32" cy="8" r="4" fill="#FFFFFF"/>
+        <rect x="30" y="10" width="4" height="8" fill="#FFFFFF"/>
+        <!-- Head -->
+        <rect x="14" y="18" width="36" height="30" rx="6" fill="#FFFFFF" stroke="#E0E0E0" stroke-width="2"/>
+        <!-- Eyes -->
+        <circle cx="24" cy="32" r="6" fill="#0EA5E9"/>
+        <circle cx="40" cy="32" r="6" fill="#0EA5E9"/>
+        <circle cx="26" cy="30" r="2" fill="#FFFFFF"/>
+        <circle cx="42" cy="30" r="2" fill="#FFFFFF"/>
+        <!-- Mouth -->
+        <rect x="24" y="42" width="16" height="4" rx="2" fill="#374151"/>
+        <!-- Ears -->
+        <rect x="8" y="28" width="6" height="12" rx="2" fill="#FFFFFF" stroke="#E0E0E0" stroke-width="1"/>
+        <rect x="50" y="28" width="6" height="12" rx="2" fill="#FFFFFF" stroke="#E0E0E0" stroke-width="1"/>
+      </svg>
+    </div>
+
+    <!-- Brush Selection Section -->
+    <div class="brush-section">
+      <!-- Pink Brush -->
+      <button class="brush-btn active" data-color="pink" onclick="selectTool('pink')">
+        <svg width="56" height="56" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="28" y="8" width="8" height="28" rx="2" fill="#8B4513" class="brush-handle"/>
+          <line x1="30" y1="12" x2="30" y2="32" stroke="#A0522D" stroke-width="1"/>
+          <line x1="34" y1="10" x2="34" y2="34" stroke="#A0522D" stroke-width="1"/>
+          <rect x="26" y="34" width="12" height="6" rx="1" fill="#C0C0C0"/>
+          <rect x="26" y="36" width="12" height="2" fill="#A0A0A0"/>
+          <path d="M26 40 L22 56 Q32 60 42 56 L38 40 Z" fill="#EC4899" class="bristles"/>
+          <path d="M28 42 L26 54" stroke="#BE185D" stroke-width="1.5"/>
+          <path d="M32 42 L32 56" stroke="#BE185D" stroke-width="1.5"/>
+          <path d="M36 42 L38 54" stroke="#BE185D" stroke-width="1.5"/>
+          <path d="M29 44 L27 52" stroke="#FBCFE8" stroke-width="2" stroke-linecap="round" class="highlight"/>
+          <ellipse cx="32" cy="58" rx="6" ry="3" fill="#F472B6" class="paint-drip"/>
+        </svg>
+      </button>
+
+      <!-- Blue Brush -->
+      <button class="brush-btn" data-color="blue" onclick="selectTool('blue')">
+        <svg width="56" height="56" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="28" y="8" width="8" height="28" rx="2" fill="#8B4513" class="brush-handle"/>
+          <line x1="30" y1="12" x2="30" y2="32" stroke="#A0522D" stroke-width="1"/>
+          <line x1="34" y1="10" x2="34" y2="34" stroke="#A0522D" stroke-width="1"/>
+          <rect x="26" y="34" width="12" height="6" rx="1" fill="#C0C0C0"/>
+          <rect x="26" y="36" width="12" height="2" fill="#A0A0A0"/>
+          <path d="M26 40 L22 56 Q32 60 42 56 L38 40 Z" fill="#3B82F6" class="bristles"/>
+          <path d="M28 42 L26 54" stroke="#1D4ED8" stroke-width="1.5"/>
+          <path d="M32 42 L32 56" stroke="#1D4ED8" stroke-width="1.5"/>
+          <path d="M36 42 L38 54" stroke="#1D4ED8" stroke-width="1.5"/>
+          <path d="M29 44 L27 52" stroke="#BFDBFE" stroke-width="2" stroke-linecap="round" class="highlight"/>
+          <ellipse cx="32" cy="58" rx="6" ry="3" fill="#60A5FA" class="paint-drip"/>
+        </svg>
+      </button>
+
+      <!-- Green Brush -->
+      <button class="brush-btn" data-color="green" onclick="selectTool('green')">
+        <svg width="56" height="56" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="28" y="8" width="8" height="28" rx="2" fill="#8B4513" class="brush-handle"/>
+          <line x1="30" y1="12" x2="30" y2="32" stroke="#A0522D" stroke-width="1"/>
+          <line x1="34" y1="10" x2="34" y2="34" stroke="#A0522D" stroke-width="1"/>
+          <rect x="26" y="34" width="12" height="6" rx="1" fill="#C0C0C0"/>
+          <rect x="26" y="36" width="12" height="2" fill="#A0A0A0"/>
+          <path d="M26 40 L22 56 Q32 60 42 56 L38 40 Z" fill="#22C55E" class="bristles"/>
+          <path d="M28 42 L26 54" stroke="#15803D" stroke-width="1.5"/>
+          <path d="M32 42 L32 56" stroke="#15803D" stroke-width="1.5"/>
+          <path d="M36 42 L38 54" stroke="#15803D" stroke-width="1.5"/>
+          <path d="M29 44 L27 52" stroke="#BBF7D0" stroke-width="2" stroke-linecap="round" class="highlight"/>
+          <ellipse cx="32" cy="58" rx="6" ry="3" fill="#4ADE80" class="paint-drip"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Eraser Section -->
+    <button class="eraser-btn" data-color="eraser" onclick="selectTool('eraser')">
+      <svg width="56" height="56" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="16" y="20" width="32" height="24" rx="4" fill="#FBBF24" stroke="#F59E0B" stroke-width="2"/>
+        <rect x="16" y="36" width="32" height="8" rx="2" fill="#EC4899" stroke="#DB2777" stroke-width="1"/>
+        <rect x="16" y="32" width="32" height="4" fill="#1E3A8A"/>
+        <rect x="20" y="24" width="8" height="2" rx="1" fill="#FDE68A"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Main Content Area (for future canvas) -->
+  <main class="content">
+    <div class="status-bar">
+      <span>Selected Tool: <strong id="selected-tool">Pink Brush</strong></span>
+    </div>
+    <div class="canvas-placeholder">
+      <p>Canvas area - Hand tracking will draw here</p>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

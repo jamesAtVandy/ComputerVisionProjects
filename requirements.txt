@@ -1,0 +1,12 @@
+# Python dependencies for AI Virtual Painter project
+
+# Core computer vision
+opencv-python>=4.5.0
+numpy>=1.21.0
+
+# Hand tracking
+mediapipe==0.10.9  # Must use 0.10.9; newer versions removed mp.solutions API
+
+# Windows volume control (optional)
+pycaw>=20181226
+comtypes>=1.1.10
