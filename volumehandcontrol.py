@@ -244,29 +244,27 @@ class VolumeController:
 
             if hands:
                 hand = hands[0]
+                
+                distance, center, thumb, index = self.get_hand_distance(hand)
 
-                # Only control with right hand (or left if image is flipped)
-                if hand["type"] == "Right":
-                    distance, center, thumb, index = self.get_hand_distance(hand)
+                # Map distance to volume
+                volume = np.interp(
+                    distance,
+                    [self.min_dist, self.max_dist],
+                    [0, 100]
+                )
+                volume = np.clip(volume, 0, 100)
 
-                    # Map distance to volume
-                    volume = np.interp(
-                        distance,
-                        [self.min_dist, self.max_dist],
-                        [0, 100]
-                    )
-                    volume = np.clip(volume, 0, 100)
+                # Smooth the volume change
+                smooth_volume = smooth_volume * 0.8 + volume * 0.2
 
-                    # Smooth the volume change
-                    smooth_volume = smooth_volume * 0.8 + volume * 0.2
+                # Set volume
+                self.set_volume(smooth_volume)
 
-                    # Set volume
-                    self.set_volume(smooth_volume)
-
-                    # Draw gesture feedback
-                    img = self.draw_gesture_feedback(
-                        img, thumb, index, center, distance
-                    )
+                # Draw gesture feedback
+                img = self.draw_gesture_feedback(
+                    img, thumb, index, center, distance
+                )
 
             # Draw volume bar
             img = self.draw_volume_bar(img, smooth_volume)

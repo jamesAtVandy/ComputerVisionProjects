@@ -103,13 +103,15 @@ while True:
                 fistDebounce = True
                 lastFistTime = time.time()
             xp, yp = 0, 0  # Reset position
-            cv2.putText(img, "COLOR SWITCH", (x1-50, y1-50), 
+            # Safe text positioning
+            text_x = max(50, min(x1 - 50, 1100))
+            text_y = max(100, min(y1 - 50, 650))
+            cv2.putText(img, "COLOR SWITCH", (text_x, text_y), 
                         cv2.FONT_HERSHEY_SIMPLEX, 1, drawColor, 2)
-        else:
-            fistDebounce = False
 
         # 5. Eraser Mode - Thumb + Index + Middle fingers up
-        if thumbUp and indexUp and middleUp:
+        elif thumbUp and indexUp and middleUp:
+            fistDebounce = False
             cv2.circle(img, (x1, y1), eraserThickness//2, (128, 128, 128), cv2.FILLED)
             
             if xp == 0 and yp == 0:
@@ -121,12 +123,17 @@ while True:
 
         # 6. Pen Lift Mode - Thumb present (stops drawing)
         elif thumbUp:
+            fistDebounce = False
             xp, yp = 0, 0  # Reset position to prevent connecting lines
-            cv2.putText(img, "PEN UP", (x1-30, y1-30), 
+            # Safe text positioning
+            text_x = max(30, min(x1 - 30, 1180))
+            text_y = max(50, min(y1 - 30, 690))
+            cv2.putText(img, "PEN UP", (text_x, text_y), 
                         cv2.FONT_HERSHEY_SIMPLEX, 0.7, (255, 255, 255), 2)
 
         # 7. Drawing Mode - Only Index finger up (no thumb)
         elif indexUp and not thumbUp:
+            fistDebounce = False
             cv2.circle(img, (x1, y1), 15, drawColor, cv2.FILLED)
             
             if xp == 0 and yp == 0:
@@ -138,7 +145,11 @@ while True:
         
         else:
             # Any other gesture - reset drawing position
+            fistDebounce = False
             xp, yp = 0, 0
+    else:
+        # No hand detected - reset position to prevent jumps
+        xp, yp = 0, 0
 
     # 6. Merge canvas with camera image
     # Create grayscale version of canvas
